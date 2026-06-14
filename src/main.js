@@ -241,11 +241,15 @@ function showToast() {
 }
 
 // ============================================================
-//  RESTART
+//  RESTART & HOME NAVIGATION
 // ============================================================
-document.getElementById('btn-restart')?.addEventListener('click', () => {
+function goHome() {
   showScreen('screen-landing');
-});
+}
+
+document.getElementById('btn-restart')?.addEventListener('click', goHome);
+document.getElementById('nav-logo-home')?.addEventListener('click', goHome);
+document.getElementById('q-logo-home')?.addEventListener('click', goHome);
 
 // ============================================================
 //  KEYBOARD SUPPORT
