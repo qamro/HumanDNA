@@ -1,0 +1,13 @@
+{
+  "name": "human-dna",
+  "version": "1.0.0",
+  "description": "What Kind of Human Are You? - Personality DNA Generator",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}

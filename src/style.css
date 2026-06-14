@@ -1,0 +1,1071 @@
+/* ============================================
+   HUMANDNA — Design System
+   Palette: Deep space navy + electric violet + 
+   warm amber + ice white + coral pulse
+   Type: Syne (display) + Inter (body)
+   Signature: Animated DNA strand as identity
+   ============================================ */
+
+:root {
+  --navy:    #0a0b14;
+  --navy2:   #10111f;
+  --violet:  #7c3aed;
+  --violet2: #9f5bf0;
+  --amber:   #f59e0b;
+  --coral:   #f43f5e;
+  --ice:     #e8eaf6;
+  --muted:   #4a4d6b;
+  --border:  rgba(124, 58, 237, 0.18);
+
+  /* DNA trait colors */
+  --dna-a: #7c3aed;
+  --dna-b: #f43f5e;
+  --dna-c: #f59e0b;
+  --dna-d: #10b981;
+  --dna-e: #3b82f6;
+  --dna-f: #ec4899;
+  --dna-g: #8b5cf6;
+  --dna-h: #06b6d4;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: var(--navy);
+  color: var(--ice);
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  height: 100dvh;
+}
+
+#app {
+  width: 100%;
+  height: 100dvh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ============================================
+   NOISE OVERLAY
+   ============================================ */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.6;
+}
+
+/* ============================================
+   SCREEN SYSTEM
+   ============================================ */
+.screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+}
+
+.screen.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.screen.exit {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ============================================
+   LANDING SCREEN
+   ============================================ */
+#screen-landing {
+  flex-direction: row;
+  padding: 0 6vw;
+  gap: 4vw;
+  background: var(--navy);
+  justify-content: space-between;
+}
+
+.landing-content {
+  flex: 1;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.landing-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 0.25rem;
+}
+
+.landing-logo-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.landing-logo-text {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: 0.15em;
+  color: var(--ice);
+}
+
+.logo-accent {
+  color: var(--violet2);
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--violet2);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+
+.hero-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-title .line1 {
+  font-size: clamp(3.5rem, 6vw, 6rem);
+  color: var(--ice);
+}
+
+.hero-title .line2 {
+  font-size: clamp(3.5rem, 6vw, 6rem);
+  color: var(--ice);
+}
+
+.hero-title .line2 em {
+  font-style: italic;
+  color: var(--violet2);
+  position: relative;
+}
+
+.hero-title .line3 {
+  font-size: clamp(3.5rem, 6vw, 6rem);
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(232, 234, 246, 0.3);
+}
+
+.hero-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(232, 234, 246, 0.55);
+  max-width: 420px;
+}
+
+.btn-start {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--violet);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  padding: 1rem 2rem;
+  border-radius: 100px;
+  width: fit-content;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.4);
+}
+
+.btn-start::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.btn-start:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.45);
+}
+
+.btn-start:active {
+  transform: translateY(0);
+}
+
+.landing-stats {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-top: 0.5rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-num {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--ice);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.stat-div {
+  width: 1px;
+  height: 32px;
+  background: var(--border);
+}
+
+/* ============================================
+   DNA PREVIEW (Landing)
+   ============================================ */
+.landing-dna-preview {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem 0;
+}
+
+.dna-preview-strand {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  position: relative;
+}
+
+.dna-labels {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+}
+
+/* ============================================
+   DNA BLOCK COMPONENT
+   ============================================ */
+.dna-row {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.dna-block {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  position: relative;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.dna-block.preview {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  animation: dna-breathe 3s ease-in-out infinite;
+}
+
+.dna-block.preview:nth-child(even) {
+  animation-delay: -1.5s;
+}
+
+@keyframes dna-breathe {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+.dna-connector {
+  width: 2px;
+  flex: 1;
+  background: rgba(232, 234, 246, 0.08);
+  height: 2px;
+}
+
+/* ============================================
+   QUESTIONS SCREEN
+   ============================================ */
+#screen-questions {
+  flex-direction: column;
+  background: var(--navy);
+  padding: 0;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+.q-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.q-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+}
+
+.q-progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.q-progress-bar {
+  width: 160px;
+  height: 3px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.q-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--violet), var(--violet2));
+  border-radius: 999px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 20%;
+}
+
+.q-progress-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+
+.q-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.q-card {
+  max-width: 640px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  animation: card-enter 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes card-enter {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes card-exit {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-20px); }
+}
+
+.q-number {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 5rem;
+  line-height: 1;
+  color: rgba(255,255,255,0.04);
+  letter-spacing: -0.04em;
+  user-select: none;
+  margin-bottom: -1.5rem;
+}
+
+.q-text {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  line-height: 1.3;
+  color: var(--ice);
+  letter-spacing: -0.02em;
+}
+
+.q-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.q-option {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.1rem 1.3rem;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: rgba(232, 234, 246, 0.7);
+  text-align: left;
+  transition: all 0.2s ease;
+  line-height: 1.4;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.q-option-letter {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+  margin-top: 1px;
+  transition: color 0.2s;
+}
+
+.q-option:hover {
+  border-color: rgba(124, 58, 237, 0.5);
+  background: rgba(124, 58, 237, 0.07);
+  color: var(--ice);
+}
+
+.q-option:hover .q-option-letter {
+  color: var(--violet2);
+}
+
+.q-option.selected {
+  border-color: var(--violet2);
+  background: rgba(124, 58, 237, 0.15);
+  color: var(--ice);
+}
+
+.q-option.selected .q-option-letter {
+  color: var(--violet2);
+}
+
+.q-option::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.q-option.selected::after {
+  opacity: 1;
+}
+
+/* ============================================
+   LIVE DNA STRAND (Questions)
+   ============================================ */
+.q-dna-live {
+  padding: 1rem 2rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.dna-live-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.dna-live-strand {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex: 1;
+}
+
+.dna-live-block {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.dna-live-block.filled {
+  border-color: transparent;
+  transform: scale(1.1);
+}
+
+.dna-live-block.empty {
+  background: rgba(255,255,255,0.04);
+}
+
+/* ============================================
+   ANALYZING SCREEN
+   ============================================ */
+#screen-analyzing {
+  background: var(--navy);
+  flex-direction: column;
+}
+
+.analyzing-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.scan-ring {
+  width: 120px;
+  height: 120px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scan-inner {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 2px solid var(--violet2);
+  position: relative;
+}
+
+.scan-inner::before {
+  content: '';
+  position: absolute;
+  inset: -25px;
+  border-radius: 50%;
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  animation: scan-rotate 2s linear infinite;
+  border-top-color: var(--violet);
+}
+
+@keyframes scan-rotate {
+  to { transform: rotate(360deg); }
+}
+
+.scan-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%);
+  animation: scan-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes scan-pulse {
+  0%, 100% { transform: scale(0.8); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
+
+.analyzing-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3rem);
+  text-align: center;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.analyzing-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.a-step {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--muted);
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.5s ease, color 0.5s ease;
+  letter-spacing: 0.01em;
+}
+
+.a-step.active {
+  opacity: 1;
+  color: rgba(232, 234, 246, 0.7);
+}
+
+.a-step.done {
+  opacity: 0.4;
+  color: var(--muted);
+}
+
+/* ============================================
+   RESULT SCREEN
+   ============================================ */
+#screen-result {
+  overflow-y: auto;
+  align-items: flex-start;
+  padding: 2.5rem 2rem;
+  background: var(--navy);
+}
+
+.result-content {
+  max-width: 680px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding-bottom: 2rem;
+}
+
+.result-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.result-eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.result-type {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--ice);
+}
+
+.result-type .type-accent {
+  color: var(--violet2);
+}
+
+.result-tagline {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(232, 234, 246, 0.55);
+  max-width: 480px;
+}
+
+/* ============================================
+   DNA RESULT STRAND
+   ============================================ */
+.dna-result-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+}
+
+.dna-strand-result {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.dna-result-block {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dna-result-block:hover {
+  transform: translateY(-3px) scale(1.05);
+}
+
+.dna-result-block .block-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.dna-connector-result {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+  min-width: 8px;
+  max-width: 24px;
+}
+
+.dna-strand-labels {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.dna-label-item {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  width: 44px;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* ============================================
+   RESULT TRAITS
+   ============================================ */
+.result-traits {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.trait-card {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.trait-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 14px 14px 0 0;
+}
+
+.trait-card-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+
+.trait-card-value {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--ice);
+  letter-spacing: -0.01em;
+}
+
+.trait-bar {
+  height: 3px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 0.25rem;
+}
+
+.trait-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+}
+
+/* ============================================
+   RESULT BREAKDOWN
+   ============================================ */
+.result-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.breakdown-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.1rem 1.3rem;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+}
+
+.breakdown-row:last-child {
+  border-bottom: none;
+}
+
+.breakdown-row:hover {
+  background: rgba(255,255,255,0.02);
+}
+
+.breakdown-q {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  color: var(--muted);
+  flex: 1;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.breakdown-a {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ice);
+  text-align: right;
+  max-width: 180px;
+  line-height: 1.4;
+}
+
+/* ============================================
+   RESULT ACTIONS
+   ============================================ */
+.result-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.btn-share {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--violet);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: 100px;
+  transition: all 0.2s ease;
+  letter-spacing: 0.01em;
+}
+
+.btn-share:hover {
+  background: var(--violet2);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(124, 58, 237, 0.4);
+}
+
+.btn-restart {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.85rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: 100px;
+  transition: all 0.2s ease;
+  letter-spacing: 0.02em;
+}
+
+.btn-restart:hover {
+  border-color: rgba(232, 234, 246, 0.2);
+  color: var(--ice);
+}
+
+/* ============================================
+   TOAST
+   ============================================ */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--ice);
+  color: var(--navy);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border-radius: 100px;
+  z-index: 999;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  white-space: nowrap;
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  body { overflow: hidden; }
+  
+  #screen-landing {
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .landing-dna-preview {
+    display: none;
+  }
+
+  .hero-title .line1,
+  .hero-title .line2,
+  .hero-title .line3 {
+    font-size: clamp(2.8rem, 12vw, 4rem);
+  }
+
+  .q-options {
+    grid-template-columns: 1fr;
+  }
+
+  .result-traits {
+    grid-template-columns: 1fr;
+  }
+
+  .q-header {
+    padding: 1rem 1.25rem;
+  }
+
+  .q-container {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .q-dna-live {
+    padding: 0.75rem 1.25rem 1.25rem;
+  }
+
+  .result-content {
+    padding-bottom: 3rem;
+  }
+
+  #screen-result {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .result-type {
+    font-size: 2.2rem;
+  }
+
+  .dna-result-block {
+    width: 36px;
+    height: 36px;
+  }
+
+  .dna-label-item {
+    width: 36px;
+    font-size: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .result-breakdown {
+    display: none;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+#screen-result::-webkit-scrollbar {
+  width: 4px;
+}
+#screen-result::-webkit-scrollbar-track {
+  background: transparent;
+}
+#screen-result::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 999px;
+}

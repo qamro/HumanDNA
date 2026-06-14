@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HUMANDNA — What Kind of Human Are You?</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.svg" />
+  <meta name="description" content="5 weird questions. Your unique Human DNA. Discover who you really are." />
+  <meta property="og:title" content="HUMANDNA — What Kind of Human Are You?" />
+  <meta property="og:description" content="5 weird questions. Your unique Human DNA strand. Are you ready?" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <div id="app">
+
+    <!-- SCREEN 1: LANDING -->
+    <section id="screen-landing" class="screen active">
+      <div class="noise-overlay"></div>
+      <div class="landing-content">
+        <div class="landing-logo">
+          <!-- DNA helix icon — two strands + colored rungs -->
+          <svg class="landing-logo-icon" width="36" height="36" viewBox="0 0 222 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="lr1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#9f5bf0"/></linearGradient>
+              <linearGradient id="lr2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#f43f5e"/><stop offset="100%" stop-color="#fb7185"/></linearGradient>
+              <linearGradient id="lr3" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#fbbf24"/></linearGradient>
+              <linearGradient id="lr4" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#34d399"/></linearGradient>
+              <linearGradient id="lr5" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#60a5fa"/></linearGradient>
+            </defs>
+            <!-- Left strand -->
+            <rect x="20" y="20" width="28" height="300" rx="14" fill="#7c3aed" opacity="0.9"/>
+            <!-- Right strand -->
+            <rect x="174" y="20" width="28" height="300" rx="14" fill="#7c3aed" opacity="0.9"/>
+            <!-- Rungs -->
+            <rect x="48" y="46"  width="126" height="22" rx="11" fill="url(#lr1)"/>
+            <rect x="48" y="100" width="126" height="22" rx="11" fill="url(#lr2)"/>
+            <rect x="48" y="154" width="126" height="24" rx="12" fill="url(#lr3)"/>
+            <rect x="48" y="208" width="126" height="22" rx="11" fill="url(#lr4)"/>
+            <rect x="48" y="262" width="126" height="22" rx="11" fill="url(#lr5)"/>
+          </svg>
+          <span class="landing-logo-text">HUMAN<span class="logo-accent">DNA</span></span>
+        </div>
+        <div class="eyebrow">
+          <span class="dot"></span>
+          <span>Personality Sequencer v1.0</span>
+        </div>
+        <h1 class="hero-title">
+          <span class="line1">What kind</span>
+          <span class="line2">of <em>human</em></span>
+          <span class="line3">are you?</span>
+        </h1>
+        <p class="hero-sub">5 questions. No right answers. Your unique DNA strand — generated from how you actually think, not how you pretend to.</p>
+        <button class="btn-start" id="btn-start">
+          <span>Sequence me</span>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="landing-stats">
+          <div class="stat"><span class="stat-num">247</span><span class="stat-label">Human types</span></div>
+          <div class="stat-div"></div>
+          <div class="stat"><span class="stat-num">5</span><span class="stat-label">Questions only</span></div>
+          <div class="stat-div"></div>
+          <div class="stat"><span class="stat-num">∞</span><span class="stat-label">Combinations</span></div>
+        </div>
+      </div>
+      <div class="landing-dna-preview">
+        <div class="dna-preview-strand" id="preview-strand"></div>
+        <div class="dna-labels">
+          <span>YOUR DNA</span>
+          <span>BEING DECODED...</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 2: QUESTIONS -->
+    <section id="screen-questions" class="screen">
+      <div class="noise-overlay"></div>
+      <div class="q-header">
+        <div class="q-logo">
+          <svg width="18" height="18" viewBox="0 0 222 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;margin-right:7px">
+            <rect x="20" y="20" width="28" height="300" rx="14" fill="#7c3aed" opacity="0.85"/>
+            <rect x="174" y="20" width="28" height="300" rx="14" fill="#7c3aed" opacity="0.85"/>
+            <rect x="48" y="46"  width="126" height="22" rx="11" fill="#7c3aed"/>
+            <rect x="48" y="100" width="126" height="22" rx="11" fill="#f43f5e"/>
+            <rect x="48" y="154" width="126" height="24" rx="12" fill="#f59e0b"/>
+            <rect x="48" y="208" width="126" height="22" rx="11" fill="#10b981"/>
+            <rect x="48" y="262" width="126" height="22" rx="11" fill="#3b82f6"/>
+          </svg>
+          HUMAN<span style="color:#9f5bf0">DNA</span>
+        </div>
+        <div class="q-progress-wrap">
+          <div class="q-progress-bar">
+            <div class="q-progress-fill" id="progress-fill"></div>
+          </div>
+          <span class="q-progress-label" id="progress-label">1 / 5</span>
+        </div>
+      </div>
+
+      <div class="q-container">
+        <div class="q-card" id="q-card">
+          <div class="q-number" id="q-number">01</div>
+          <h2 class="q-text" id="q-text"></h2>
+          <div class="q-options" id="q-options"></div>
+        </div>
+      </div>
+
+      <div class="q-dna-live">
+        <div class="dna-live-label">Building your strand</div>
+        <div class="dna-live-strand" id="live-strand"></div>
+      </div>
+    </section>
+
+    <!-- SCREEN 3: ANALYZING -->
+    <section id="screen-analyzing" class="screen">
+      <div class="noise-overlay"></div>
+      <div class="analyzing-content">
+        <div class="scan-ring">
+          <div class="scan-inner"></div>
+          <div class="scan-pulse"></div>
+        </div>
+        <h2 class="analyzing-title">Sequencing<br/>your DNA</h2>
+        <div class="analyzing-steps" id="analyzing-steps">
+          <div class="a-step">Analyzing cognitive patterns...</div>
+          <div class="a-step">Mapping emotional topology...</div>
+          <div class="a-step">Cross-referencing 247 human types...</div>
+          <div class="a-step">Rendering your strand...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 4: RESULT -->
+    <section id="screen-result" class="screen">
+      <div class="noise-overlay"></div>
+      <div class="result-content">
+        <div class="result-header">
+          <div class="result-eyebrow">Your Human DNA</div>
+          <h2 class="result-type" id="result-type"></h2>
+          <p class="result-tagline" id="result-tagline"></p>
+        </div>
+
+        <div class="dna-result-wrap" id="dna-result-wrap">
+          <div class="dna-strand-result" id="dna-strand-result"></div>
+          <div class="dna-strand-labels" id="dna-strand-labels"></div>
+        </div>
+
+        <div class="result-traits" id="result-traits"></div>
+
+        <div class="result-breakdown" id="result-breakdown"></div>
+
+        <div class="result-actions">
+          <button class="btn-share" id="btn-share">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M13.5 6C14.7426 6 15.75 4.99264 15.75 3.75C15.75 2.50736 14.7426 1.5 13.5 1.5C12.2574 1.5 11.25 2.50736 11.25 3.75C11.25 4.99264 12.2574 6 13.5 6Z" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M4.5 11.25C5.74264 11.25 6.75 10.2426 6.75 9C6.75 7.75736 5.74264 6.75 4.5 6.75C3.25736 6.75 2.25 7.75736 2.25 9C2.25 10.2426 3.25736 11.25 4.5 11.25Z" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M13.5 16.5C14.7426 16.5 15.75 15.4926 15.75 14.25C15.75 13.0074 14.7426 12 13.5 12C12.2574 12 11.25 13.0074 11.25 14.25C11.25 15.4926 12.2574 16.5 13.5 16.5Z" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M6.6225 10.0575L11.385 12.6975M11.3775 5.3025L6.6225 7.9425" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            Share my DNA
+          </button>
+          <button class="btn-restart" id="btn-restart">
+            Try again
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div id="toast" class="toast">Link copied to clipboard!</div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
