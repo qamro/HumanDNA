@@ -984,44 +984,237 @@ body {
 .toast.show { transform: translateX(-50%) translateY(0); }
 
 /* ══════════════════════════════════════════
-   RESPONSIVE
+   RESPONSIVE — TABLET
    ══════════════════════════════════════════ */
 @media (max-width: 900px) {
   .landing-dna-preview { display: none; }
-  .footer-right { display: none; }
-  .footer-card { max-width: 100%; }
+  .footer-right        { display: none; }
+  .footer-card         { max-width: 100%; }
 }
 
+/* ══════════════════════════════════════════
+   RESPONSIVE — MOBILE (≤ 680px)
+   ══════════════════════════════════════════ */
 @media (max-width: 680px) {
-  .landing-nav { padding: 0 1.25rem; }
-  .nav-badge   { display: none; }
 
-  .landing-hero { padding: 0 1.25rem; }
+  /* Allow body/app to scroll on mobile */
+  body { overflow: auto; height: auto; }
+  #app { height: auto; overflow: visible; }
+
+  /* ── SCREENS: stack vertically, no absolute overlap ── */
+  .screen {
+    position: relative;
+    inset: unset;
+    display: none;
+    opacity: 1;
+    pointer-events: none;
+    min-height: 100dvh;
+    flex-direction: column;
+  }
+
+  .screen.active {
+    display: flex;
+    pointer-events: all;
+  }
+
+  /* ── LANDING NAV ── */
+  .landing-nav  { padding: 0 1.25rem; height: 56px; }
+  .nav-badge    { display: none; }
+
+  /* ── LANDING HERO ── */
+  #screen-landing { height: auto; min-height: 100dvh; overflow: visible; }
+
+  .landing-hero {
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 1.5rem 1.25rem 1rem;
+    gap: 1.5rem;
+    overflow: visible;
+    min-height: 0;
+  }
+
+  .landing-content { gap: 1rem; max-width: 100%; }
 
   .hero-title .line1,
   .hero-title .line2,
-  .hero-title .line3 { font-size: clamp(2.2rem, 10vw, 3rem); }
+  .hero-title .line3 { font-size: clamp(2.4rem, 11vw, 3.2rem); }
 
-  .landing-footer { padding: 0 1.25rem; }
+  .hero-sub { font-size: 0.875rem; max-width: 100%; }
+
+  .hero-actions { gap: 1rem; }
+
+  .landing-stats { gap: 1rem; }
+  .stat-num      { font-size: 1.1rem; }
+
+  /* ── FOOTER ── */
+  .landing-footer {
+    padding: 0 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem 0;
+    gap: 0;
+  }
 
   .footer-card {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.75rem;
+    gap: 0.85rem;
+    padding: 1rem 1.1rem;
+    width: 100%;
+    max-width: 100%;
   }
 
-  .footer-links { margin-left: 0; }
+  .footer-links {
+    margin-left: 0;
+    gap: 0.4rem;
+  }
 
-  .q-options    { grid-template-columns: 1fr; }
-  .result-traits { grid-template-columns: 1fr; }
-  .q-header     { padding: 0 1.25rem; }
-  .q-container  { padding: 1.25rem; }
-  .q-dna-live   { padding: 0.75rem 1.25rem 1.1rem; }
-  #screen-result { padding: 1.5rem 1.25rem; }
-}
+  .footer-link {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.68rem;
+  }
 
-@media (max-width: 480px) {
-  .result-breakdown { display: none; }
+  .footer-name  { flex-direction: column; gap: 1px; }
+  .footer-firstname { font-size: 0.9rem; }
+  .footer-lastname  { font-size: 0.95rem; }
+
+  .footer-copy {
+    display: block;
+    text-align: center;
+    padding: 0.65rem 0 0.25rem;
+    font-size: 0.6rem;
+  }
+
+  /* ── QUESTIONS SCREEN ── */
+  #screen-questions {
+    min-height: 100dvh;
+    overflow: visible;
+  }
+
+  .q-header {
+    padding: 0 1.25rem;
+    height: 56px;
+    flex-shrink: 0;
+  }
+
+  .q-progress-bar { width: 100px; }
+
+  .q-container {
+    flex: 1;
+    padding: 1.25rem;
+    overflow: visible;
+    align-items: flex-start;
+    padding-top: 1.5rem;
+  }
+
+  .q-card {
+    gap: 1.25rem;
+    width: 100%;
+  }
+
+  .q-number {
+    font-size: 3rem;
+    margin-bottom: -0.75rem;
+  }
+
+  .q-text {
+    font-size: clamp(1.1rem, 5vw, 1.4rem);
+  }
+
+  .q-options {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+  }
+
+  .q-option {
+    padding: 0.85rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .q-dna-live {
+    padding: 0.75rem 1.25rem 1rem;
+    flex-shrink: 0;
+  }
+
+  /* ── ANALYZING SCREEN ── */
+  #screen-analyzing {
+    min-height: 100dvh;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .analyzing-title { font-size: 2rem; }
+
+  /* ── RESULT SCREEN ── */
+  #screen-result {
+    overflow-y: visible;
+    overflow-x: hidden;
+    padding: 1.25rem 1.25rem 2rem;
+    min-height: 100dvh;
+    align-items: stretch;
+  }
+
+  .result-content {
+    gap: 1.5rem;
+    padding-bottom: 1rem;
+    max-width: 100%;
+  }
+
+  .result-type { font-size: 1.9rem; }
+
+  /* DNA strand blocks — smaller on mobile */
+  .dna-result-block {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+  }
+
+  .dna-result-block .block-icon { font-size: 0.85rem; }
+
+  .dna-label-item {
+    width: 34px;
+    font-size: 0.48rem;
+  }
+
+  .dna-result-wrap { padding: 1rem; }
+
+  /* Traits — single column */
+  .result-traits { grid-template-columns: 1fr; gap: 0.55rem; }
+
+  /* Breakdown — SHOW on mobile, not hidden */
+  .result-breakdown { display: flex; }
+
+  .breakdown-row {
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 0.85rem 1rem;
+  }
+
+  .breakdown-q  { font-size: 0.72rem; }
+  .breakdown-a  {
+    text-align: left;
+    max-width: 100%;
+    font-size: 0.78rem;
+    color: var(--violet2);
+  }
+
+  /* Result actions */
+  .result-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-share, .btn-restart {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
 }
 
 /* ─── SCROLLBAR ──────────────────────────── */
