@@ -55,7 +55,7 @@ export const HUMAN_TYPES = {
   // By dominant trait combinations
   "digital+social+external+comfort+observer": {
     name: "The Chaotic Optimist",
-    tagline: "You move fast, feel everything loudly, and somehow make it all work. Chaos is your comfort zone — you just call it 'energy'.",
+    tagline: "You move fast, feel everything loudly, and somehow make it all work. Chaos is your comfort zone, you just call it 'energy'.",
     traits: [
       { label: "Chaos tolerance", value: 92, color: "#f43f5e" },
       { label: "Social energy", value: 88, color: "#ec4899" },
@@ -76,7 +76,7 @@ export const HUMAN_TYPES = {
     },
     {
       name: "The Chaotic Optimist",
-      tagline: "You move fast, feel everything loudly, and somehow make it all work. Chaos is your comfort zone — you just call it 'energy'.",
+      tagline: "You move fast, feel everything loudly, and somehow make it all work. Chaos is your comfort zone, you just call it 'energy'.",
       traits: [
         { label: "Chaos tolerance", value: 92, color: "#f43f5e" },
         { label: "Social energy", value: 88, color: "#ec4899" },
@@ -96,7 +96,7 @@ export const HUMAN_TYPES = {
     },
     {
       name: "The Reluctant Leader",
-      tagline: "You didn't ask for this role. Nobody elected you. But here you are — the most capable person in the room, again.",
+      tagline: "You didn't ask for this role. Nobody elected you. But here you are the most capable person in the room, again.",
       traits: [
         { label: "Responsibility", value: 85, color: "#10b981" },
         { label: "Ambition", value: 62, color: "#f59e0b" },
@@ -156,7 +156,7 @@ export const HUMAN_TYPES = {
     },
     {
       name: "The Disciplined Hedonist",
-      tagline: "You've optimized your joy. Sleep schedule, nutrition, chaos quotas — all tracked. You treat fun like a performance metric.",
+      tagline: "You've optimized your joy. Sleep schedule, nutrition, chaos quotas, all tracked. You treat fun like a performance metric.",
       traits: [
         { label: "Self-discipline", value: 87, color: "#7c3aed" },
         { label: "Enjoyment capacity", value: 90, color: "#f59e0b" },
